@@ -9,6 +9,11 @@ resource "google_compute_instance" "default" {
  machine_type = "f1-micro"
  zone         = "us-west1-a"
 
+metadata = {
+   ssh-keys = "Robert:${file("~/.ssh/id_ed25519.pub")}"
+ }
+
+
  boot_disk {
    initialize_params {
      image = "debian-cloud/debian-9"
@@ -25,4 +30,19 @@ resource "google_compute_instance" "default" {
      // Include this section to give the VM an external ip address
    }
  }
+}
+
+resource "google_compute_firewall" "default" {
+ name    = "flask-app-firewall"
+ network = "default"
+
+ allow {
+   protocol = "tcp"
+   ports    = ["5000"]
+ }
+}
+
+// A variable for extracting the external IP address of the instance
+output "ip" {
+ value = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
 }

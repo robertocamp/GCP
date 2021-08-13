@@ -38,3 +38,6 @@
 
 - There is now a new instance running in Google Cloud, so your next steps are getting a web 
 application created, deploying it to the instance, and exposing an endpoint for consumption.
+
+- the instance can be reached via the GCP cosole over ssh
+- external ssh access requires a public ssh key be added to the terraform resource
