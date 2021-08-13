@@ -24,8 +24,8 @@
 ## PROJECT SETUP ON GCP
   1. create new project: ptf-1-322802
   2. setup a Service Account for TF to use:
-    1. Go to the create service account key page. 
-    2. Select the default service account or create a new one
+      1. Go to the create service account key page. 
+      2. Select the default service account or create a new one
   3. if you are storing the key file in your project , add it to .gitignore
   4. provider code can be in either "versions.tf" or "main.tf"
 
@@ -35,6 +35,6 @@
   1. terraform init
   2. terraform plan
   3. terraform apply
-  
+
 - There is now a new instance running in Google Cloud, so your next steps are getting a web 
 application created, deploying it to the instance, and exposing an endpoint for consumption.
