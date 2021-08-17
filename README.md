@@ -26,7 +26,7 @@
   2. setup a Service Account for TF to use:
       1. Go to the create service account key page. 
       2. Select the default service account or create a new one
-  3. if you are storing the key file in your project , add it to .gitignore
+  3. if you are storing the key file in your project , **DO NOT** add it to .gitignore
   4. provider code can be in either "versions.tf" or "main.tf"
 
 ## TERRAFORM 
@@ -41,3 +41,37 @@ application created, deploying it to the instance, and exposing an endpoint for 
 
 - the instance can be reached via the GCP cosole over ssh
 - external ssh access requires a public ssh key be added to the terraform resource
+
+
+## Getting started with Go on Compute Engine
+- GCP construted used:
+  1. compute engine
+  2. cloud build
+
+
+### Cloud Billing
+- A Cloud Billing account is used to define who pays for a given set of resources, and it can be linked to one or more projects
+- Project usage is charged to the linked Cloud Billing account.
+- If you are a billing administrator on only one Cloud Billing account, new projects you create are automatically linked to your existing Cloud Billing account
+
+
+#### Cloud Build: Example app
+1. identify (create) a new project
+2. make sure billing is enabled on the Project 
+3. enable the Compute Engine and Cloud Build APIs
+4. open the Cloud Shell (set your Cloud Shell to the Project ID) `gcloud config set project YOUR_PROJECT_ID`
+
+
+---
+> Cloud Shell provides command-line access to your cloud resources directly from the browser.
+
+- run the example app:
+
+```
+go build -o app
+./app
+```
+
+## Links
+https://github.com/GoogleCloudBuild
+https://cloud.google.com/shell/docs/quickstart
