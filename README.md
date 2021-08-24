@@ -21,11 +21,17 @@
   `$ ssh-add -K ~/.ssh/id_ed25519`
   > Enter passphrase for /Users/robert/.ssh/id_ed25519: 
   
-## PROJECT SETUP ON GCP
+## PROJECT SETUP ON GCP: Terraform automation needs a Service Account
   1. create new project: ptf-1-322802
   2. setup a Service Account for TF to use:
+    1. **CONSOLE**
       1. Go to the create service account key page. 
       2. Select the default service account or create a new one
+    2. **GCLOUD CLI**
+      1. from the CLI initialize gcloud: `gcloud` 
+      2. set the project id:  gcloud config set project PROJECT`
+      3. `gcloud iam service-accounts create ops-team`
+      4. `gcloud iam service-accounts keys create ./ops-team.json --iam-account ops-team@email
   3. if you are storing the key file in your project , **DO NOT** add it to .gitignore
   4. provider code can be in either "versions.tf" or "main.tf"
 
@@ -72,6 +78,9 @@ go build -o app
 ./app
 ```
 
+
+## GCLOUD
+https://cloud.google.com/artifact-registry/docs/gcloud-defaults   
 ## Links
 https://github.com/GoogleCloudBuild
 https://cloud.google.com/shell/docs/quickstart
